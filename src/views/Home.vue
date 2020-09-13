@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import CompHeader from "@/components/common/Header.vue"
-import CompAside from "@/components/common/Aside.vue"
+import CompHeader from '@/components/common/Header.vue'
+import CompAside from '@/components/common/Aside.vue'
 export default {
 	components: {
 		CompHeader,

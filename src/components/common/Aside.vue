@@ -10,6 +10,7 @@
 			:index="item.path"
 			v-for="item in noChildren"
 			:key="item.path"
+			@click="clickMenu(item)"
 		>
 			<i :class="'el-icon-' + item.icon"></i>
 			<span slot="title">{{ item.label }}</span>
@@ -25,6 +26,7 @@
 					:index="subItem.path"
 					v-for="(subItem, subIndex) in item.children"
 					:key="subIndex"
+					@click="clickMenu(subItem)"
 				>
 					{{ subItem.label }}
 				</el-menu-item>
@@ -39,33 +41,38 @@ export default {
 		return {
 			asideMenu: [
 				{
-					path: "/",
-					label: "首页",
-					icon: "s-home"
+					path: '/',
+					label: '首页',
+					name: 'home',
+					icon: 's-home'
 				},
 				{
-					path: "/video",
-					label: "视频管理",
-					icon: "video-play"
+					path: '/video',
+					label: '视频管理',
+					name: 'video',
+					icon: 'video-play'
 				},
 				{
-					path: "/user",
-					label: "用户管理",
-					icon: "user-solid"
+					path: '/user',
+					label: '用户管理',
+					name: 'user',
+					icon: 'user-solid'
 				},
 				{
-					label: "其他",
-					icon: "more",
+					label: '其他',
+					icon: 'more',
 					children: [
 						{
-							paht: "/page1",
-							label: "页面1",
-							icon: "setting"
+							paht: '/page1',
+							label: '页面1',
+							name: 'page1',
+							icon: 'setting'
 						},
 						{
-							paht: "/page2",
-							label: "页面2",
-							icon: "setting"
+							paht: '/page2',
+							label: '页面2',
+							name: 'page2',
+							icon: 'setting'
 						}
 					]
 				}
@@ -78,6 +85,11 @@ export default {
 		},
 		hasChildren() {
 			return this.asideMenu.filter((item) => item.children)
+		}
+	},
+	methods: {
+		clickMenu(item) {
+			this.$store.commit('selectMenu', item)
 		}
 	}
 }
