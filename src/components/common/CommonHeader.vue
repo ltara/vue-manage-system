@@ -31,6 +31,7 @@ export default {
 			userImg: require('@/assets/image/user.jpg')
 		}
 	},
+	// 获取当前菜单状态
 	computed: {
 		...mapState({
 			current: (state) => state.tab.currentMenu

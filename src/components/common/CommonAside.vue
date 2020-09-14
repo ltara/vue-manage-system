@@ -39,6 +39,7 @@
 export default {
 	data() {
 		return {
+			// 几个菜单选项的数据
 			asideMenu: [
 				{
 					path: '/',
@@ -80,14 +81,17 @@ export default {
 		}
 	},
 	computed: {
+		// 过滤出无子菜单的菜单
 		noChildren() {
 			return this.asideMenu.filter((item) => !item.children)
 		},
+		// 过滤出有子菜单的菜单
 		hasChildren() {
 			return this.asideMenu.filter((item) => item.children)
 		}
 	},
 	methods: {
+		// 通过点击事件改变当前菜单的状态
 		clickMenu(item) {
 			this.$store.commit('selectMenu', item)
 		}
