@@ -2,9 +2,11 @@
 	<el-menu
 		default-active="2"
 		class="el-menu-vertical-demo"
-		background-color="#33aef0"
+		background-color="#545c64"
 		text-color="#fff"
 		active-text-color="#ffd04b"
+		router
+		:collapse="isCollapse"
 	>
 		<el-menu-item
 			:index="item.path"
@@ -15,7 +17,6 @@
 			<i :class="'el-icon-' + item.icon"></i>
 			<span slot="title">{{ item.label }}</span>
 		</el-menu-item>
-
 		<el-submenu index="1" v-for="(item, index) in hasChildren" :key="index">
 			<template slot="title">
 				<i :class="'el-icon-' + item.icon"></i>
@@ -24,8 +25,8 @@
 			<el-menu-item-group>
 				<el-menu-item
 					:index="subItem.path"
-					v-for="(subItem, subIndex) in item.children"
-					:key="subIndex"
+					v-for="subItem in item.children"
+					:key="subItem.path"
 					@click="clickMenu(subItem)"
 				>
 					{{ subItem.label }}
@@ -64,13 +65,13 @@ export default {
 					icon: 'more',
 					children: [
 						{
-							paht: '/page1',
+							path: '/page1',
 							label: '页面1',
 							name: 'page1',
 							icon: 'setting'
 						},
 						{
-							paht: '/page2',
+							path: '/page2',
 							label: '页面2',
 							name: 'page2',
 							icon: 'setting'
@@ -88,6 +89,9 @@ export default {
 		// 过滤出有子菜单的菜单
 		hasChildren() {
 			return this.asideMenu.filter((item) => item.children)
+		},
+		isCollapse() {
+			return this.$store.state.tab.isCollapse
 		}
 	},
 	methods: {
@@ -103,5 +107,9 @@ export default {
 .el-menu {
 	height: 100%;
 	border: none;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+	width: 200px;
+	min-height: 400px;
 }
 </style>

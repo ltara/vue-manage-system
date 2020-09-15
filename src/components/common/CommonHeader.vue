@@ -1,10 +1,15 @@
 <template>
 	<header>
 		<div class="l-content">
-			<el-button type="primary" icon="el-icon-menu" size="mini"></el-button>
+			<el-button
+				type="primary"
+				icon="el-icon-menu"
+				size="mini"
+				@click="collapseAside"
+			></el-button>
 			<el-breadcrumb separator="/">
 				<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-				<el-breadcrumb-item :to="current.path" v-if="current">
+				<el-breadcrumb-item v-if="current">
 					{{ current.label }}
 				</el-breadcrumb-item>
 			</el-breadcrumb>
@@ -36,6 +41,11 @@ export default {
 		...mapState({
 			current: (state) => state.tab.currentMenu
 		})
+	},
+	methods: {
+		collapseAside() {
+			this.$store.commit('collapseAside')
+		}
 	}
 }
 </script>
@@ -73,6 +83,9 @@ header {
 	color: #f4f4f4;
 	&:last-child .el-breadcrumb__inner {
 		color: #fff;
+		&:hover {
+			color: #fff;
+		}
 	}
 }
 </style>

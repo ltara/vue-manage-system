@@ -1,9 +1,11 @@
 export default {
 	state: {
-		// 菜单数组
-		menu: [],
 		// 当前菜单
 		currentMenu: null,
+		// 侧边栏是否折叠
+		isCollapse: false,
+		// 菜单数组
+		menu: [],
 		// 存放标签，默认已经存放首页标签
 		tabList: [
 			{
@@ -15,6 +17,7 @@ export default {
 		]
 	},
 	mutations: {
+		// 选择菜单为当前菜单
 		selectMenu(state, val) {
 			// 判断当前菜单页是否为home页
 			if (val.name === 'home') {
@@ -35,6 +38,10 @@ export default {
 			let result = state.tabList.findIndex((item) => item.name === val.name)
 			// 通过索引删除它
 			state.tabList.splice(result, 1)
+		},
+		// 折叠侧边栏
+		collapseAside(state) {
+			state.isCollapse = state.isCollapse ? false : true
 		}
 	},
 	actions: {}
