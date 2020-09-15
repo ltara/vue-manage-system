@@ -18,9 +18,14 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
 	(response) => {
-		return ({ status, data } = response)
+		let res = {}
+		res.status = response.status
+		res.data = response.data
+		return res
 	},
 	(err) => {
 		console.log(err)
 	}
 )
+
+export default service
