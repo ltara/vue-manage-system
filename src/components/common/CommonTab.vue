@@ -38,6 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .tabs {
+	background-color: #ddd;
 	padding: 20px;
 	.el-tag + .el-tag {
 		margin-left: 10px;
