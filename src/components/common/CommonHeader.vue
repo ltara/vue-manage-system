@@ -33,7 +33,7 @@ import { mapState } from 'vuex'
 export default {
 	data() {
 		return {
-			userImg: require('@/assets/image/user.jpg')
+			userImg: require('@/assets/image/user.png')
 		}
 	},
 	// 获取当前菜单状态
