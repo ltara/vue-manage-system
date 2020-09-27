@@ -158,7 +158,8 @@ export default {
         this.echartData.user.series.push({
           name: '活跃用户',
           data: user.map(item => item.active),
-          type: 'bar'
+          type: 'bar',
+          barGap: 0
         })
         // 饼图
         this.echartData.video.series.push({

@@ -1,7 +1,7 @@
 <template>
-	<div>
-		PageOne
-	</div>
+  <div>
+    PageOne
+  </div>
 </template>
 
 <script>

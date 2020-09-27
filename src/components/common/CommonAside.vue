@@ -92,11 +92,15 @@ export default {
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse
+    },
+    menu() {
+      return this.$store.state.tab.menu
     }
   },
   methods: {
     // 通过点击事件改变当前菜单的状态
     clickMenu(item) {
+      this.$router.push({ name: item.name })
       this.$store.commit('selectMenu', item)
     }
   }

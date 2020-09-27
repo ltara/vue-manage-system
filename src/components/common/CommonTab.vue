@@ -5,6 +5,7 @@
       v-for="tag in tags"
       :closable="tag.name !== 'home'"
       :disable-transitions="false"
+      @click="handleToPage(tag)"
       @close="handleClose(tag)"
     >
       {{ tag.label }}
@@ -29,6 +30,9 @@ export default {
     ...mapMutations({
       close: 'closeTab'
     }),
+    handleToPage(tag) {
+      this.$router.push(tag.path)
+    },
     handleClose(tag) {
       this.close(tag)
     }
@@ -38,8 +42,10 @@ export default {
 
 <style lang="scss" scoped>
 .tabs {
-  background-color: #ddd;
   padding: 10px;
+  .el-tag {
+    cursor: pointer;
+  }
   .el-tag + .el-tag {
     margin-left: 10px;
   }
